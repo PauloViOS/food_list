@@ -18,9 +18,9 @@ def item(request):
 
 
 def detail(request, item_id):
-	item = Item.objects.get(pk=item_id)
+	item_instance = Item.objects.get(pk=item_id)
 	context = {
-		'item': item,
+		'item': item_instance,
 	}
 	return render(request, 'food/detail.html', context)
 
@@ -35,20 +35,20 @@ def add_item(request):
 
 
 def edit_item(request, item_id):
-	item = Item.objects.get(id=item_id)
-	form = ItemForm(request.POST or None, instance=item)
+	item_instance = Item.objects.get(id=item_id)
+	form = ItemForm(request.POST or None, instance=item_instance)
 
 	if form.is_valid():
 		form.save()
 		return redirect('food:index')
-	return render(request, 'food/item-form.html', {'form': form, 'item': item})
+	return render(request, 'food/item-form.html', {'form': form, 'item': item_instance})
 
 
 def delete_item(request, item_id):
-	item = Item.objects.get(id=item_id)
+	item_instance = Item.objects.get(id=item_id)
 
 	if request.method == "POST":
-		item.delete()
+		item_instance.delete()
 		return redirect('food:index')
 
-	return render(request, 'food/item-delete.html', {'item': item})
+	return render(request, 'food/item-delete.html', {'item': item_instance})
