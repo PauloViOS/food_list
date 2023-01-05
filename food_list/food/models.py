@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 
 
@@ -15,3 +16,4 @@ class Item(models.Model):
 		max_length=500,
 		default="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQipEtiHLzPkCFMzLEqzlkXcAb-R3Y92AE_cXZAO1VBiP4NhJrldG718z8k1MSoe6xU7zo&usqp=CAU"
 	)
+	user_name = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
