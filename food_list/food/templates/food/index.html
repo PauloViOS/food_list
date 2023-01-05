@@ -1,22 +1,23 @@
 {% extends 'food/base.html' %}
 
 {% block body %}
-	{% for item in item_list %}
-		<div class="row">
-			<div class="col-md-3 offset-md-2">
-				<img class="card" height="150px" src="{{ item.image }}" alt="food image">
-			</div>
-			<div class="col-md-4 offset-md-1">
-				<h3>{{ item.name }}</h3>
-				<h5>{{ item.description }}</h5>
-				<h6>R$ {{ item.price }}</h6>
-			</div>
-			<div class="col-md-2">
-				<a class="btn btn-success" href="{% url 'food:detail' item.id %}">Detalhes</a>
-				<a class="btn btn-warning" href="{% url 'food:edit_item' item.id %}">Editar item</a>
-			</div>
-		</div>
-	{% endfor %}
+{% for item in item_list %}
+<div class="row">
+	<div class="col-md-3 offset-md-2">
+		<img class="card" height="150px" src="{{ item.image }}" alt="food image">
+	</div>
+	<div class="col-md-4 offset-md-1">
+		<h3>{{ item.name }}</h3>
+		<h5>{{ item.description }}</h5>
+		<h6>R$ {{ item.price }}</h6>
+		<h6>{{ item.user_name }}</h6>
+	</div>
+	<div class="col-md-2">
+		<a class="btn btn-success" href="{% url 'food:detail' item.id %}">Detalhes</a>
+		<a class="btn btn-warning" href="{% url 'food:edit_item' item.id %}">Editar item</a>
+	</div>
+</div>
+{% endfor %}
 {% endblock %}
 
 
