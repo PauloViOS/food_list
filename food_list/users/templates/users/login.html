@@ -15,7 +15,9 @@
 						{% for field in form %}
 						<div class="form-group">
 							{{ field.name }}
+							<br>
 							{{ field }}
+							<br><br>
 						</div>
 						{% endfor %}
 						<button class="btn btn-primary" type="submit">Login</button>
@@ -25,6 +27,4 @@
 		</div>
 	</div>
 </div>
-
-
 {% endblock %}
